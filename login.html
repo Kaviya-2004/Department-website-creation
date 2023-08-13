@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <!---<title> Responsive Registration Form | CodingLab </title>--->
+    <link rel="stylesheet" href="style.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> LOGIN FORM </title>
+	<script src="jquery.js">
+	</script>
+
+	<script>
+
+		$(document).ready(function () {
+			
+			var uCheck = true;
+			$("#ucheck").hide();
+
+			var pCheck = true;
+			$("#pcheck").hide();
+
+			var cpCheck = true;
+			$("#cpcheck").hide();
+              
+
+			function userNameCheck(){
+				var username = $("#uname").val();
+				if(username == ""){
+					uCheck = false;
+					$("#ucheck").show();
+					$("#uname").addClass("redTextBox");
+					$("#ucheck").html("<b>**Firstname cannot be empty**</b>");
+					return false;
+				}
+				else{
+					uCheck = true;
+					$("#uname").removeClass("redTextBox");
+					$("#ucheck").hide();
+					return true;
+				}
+			}
+
+			function passwordCheck(){
+         				var password = $("#pwd").val();
+				if(password == ""){
+					pCheck = false;
+					$("#pcheck").show();
+					$("#pwd").addClass("redTextBox");
+					$("#pcheck").html("<b>**Password cannot be empty**</b>");
+					return false;
+				}
+                                                      
+				else if(password.charAt(0)=="#"){
+					pCheck = false;
+					$("#pcheck").show();
+					$("#pwd").addClass("redTextBox");
+					$("#pcheck").html("<b>**First letter of password should not be #**</b>");
+					return false;
+				}
+
+				else if(password.length<8){
+					pCheck = false;
+					$("#pcheck").show();
+					$("#pwd").addClass("redTextBox");
+					$("#pcheck").html("<b>**Password should atleast contain 8 letters**</b>");
+					return false;
+				}
+
+				else if(!password.match(/.[0-9]./)){
+					pCheck = false;
+					$("#pcheck").show();
+					$("#pwd").addClass("redTextBox");
+					$("#pcheck").html("<b>**Password should atleast contain 1 number**</b>");
+					return false;
+				}
+
+
+				else if(!password.match(/^[#$ a-z A-Z 0-9]+$/)){
+					pCheck = false;
+					$("#pcheck").show();
+					$("#pwd").addClass("redTextBox");
+					$("#pcheck").html("<b>**Password should contain only # and $** </b>");
+					return false;
+				}
+
+				else{
+					pCheck = true;
+					$("#pcheck").hide();
+					return true;
+				}
+			}
+
+			function confirmPasswordCheck(){
+				var password = $("#pwd").val();
+         				var cpassword = $("#cpwd").val();
+				if(cpassword == ""){
+					cpCheck = false;
+					$("#cpcheck").show();
+					$("#cpwd").addClass("redTextBox");
+					$("#cpcheck").html("<b>**Confirm Password cannot be empty**</b>");
+					return false;
+				}
+
+				else if(password != cpassword){
+					cpCheck = false;
+					$("#cpcheck").show();
+					$("#cpwd").addClass("redTextBox");
+					$("#cpcheck").html("<b>**Password and confirm password didn't match**</b>");
+					return false;
+				}
+				else if(password==cpassword)
+                  {
+                        alert("Successfully completed");
+                  }
+
+				else{
+					cpCheck = true;
+					$("#cpcheck").hide();
+					return true;
+				}
+			}
+			
+			$(":button").click(function(e){
+				userNameCheck();
+				passwordCheck();
+				confirmPasswordCheck();
+				if (uCheck == true) {
+					return true;
+				} 
+				else {
+					return false;
+				}
+			});
+
+
+
+
+	});
+
+</script>
+<style>
+        .redTextBox {
+            background-color: gray;
+        }
+</style>
+</head>
+
+<body >
+
+	<div class="container">
+		<div class="title">Login</div>
+		<div class="content">
+			<form action="login">
+				<div class="user-details">
+
+					<div class="input-box">
+						<span class="details"> User Name: </span>
+						<input type="text" id="uname" >
+							<span id = "ucheck"></span>
+					</div>
+<br>
+
+					<div class="input-box">
+						<span class="details"> Password:</span>
+						<input type="password" id="pwd" >
+							<span id = "pcheck"></span>
+					</div>
+<br>
+	
+					<div class="input-box">
+						<span class="details"> Confirm Password:</span>
+						<input type="password" id="cpwd" >
+							<span id = "cpcheck"></span>
+					</div>
+				</div>
+<br>
+				<div class="button">
+					<input type="button" value="Submit" />
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

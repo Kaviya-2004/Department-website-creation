@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <!---<title> Responsive Registration Form | CodingLab </title>--->
+    <link rel="stylesheet" href="style.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> REGISTER FORM </title>
+	<script src="jquery.js">
+	</script>
+
+	<script>
+
+		$(document).ready(function () {
+
+			var fCheck = true;
+			$("#fcheck").hide();
+                                    
+			var lCheck = true;
+			$("#lcheck").hide();
+
+			var mCheck = true;
+			$("#mcheck").hide();
+
+			var cCheck = true;
+			$("#ccheck").hide();
+
+			var eCheck = true;
+			$("#echeck").hide();
+
+			var pCheck = true;
+			$("#pcheck").hide();
+
+
+			function firstNameCheck(){
+				var firstname = $("#first_name").val();
+				if(firstname == ""){
+					fCheck = false;
+					$("#fcheck").show();
+					$("#first_name").addClass("redTextBox");
+					$("#fcheck").html("<b>**Firstname cannot be empty</b>");
+					return false;
+				}
+				else{
+					fCheck = true;
+					$("#fcheck").hide();
+					$("#first_name").removeClass("redTextBox");
+					return true;
+				}
+			}	
+
+
+
+			function lastNameCheck(){
+				var lastname = $("#last_name").val();
+				if(lastname == ""){
+					lCheck = false;
+					$("#lcheck").show();
+					$("#last_name").addClass("redTextBox");
+					$("#lcheck").html("<b>**Last Name cannot be empty</b>");
+					return false;
+				}
+			else{
+				lCheck = true;
+				$("#lcheck").hide();
+				$("#last_name").removeClass("redTextBox");
+				return true;
+			}
+		}
+
+
+
+		function mobileCheck(){
+			var mobileno = $("#mobile_no").val();
+			if(mobileno == ""){
+				mCheck = false;
+				$("#mcheck").show();
+				$("#mobile_no").addClass("redTextBox");
+				$("#mcheck").html("<b>**Mobile Number cannot be empty</b>");
+				return false;
+			}
+
+			else if(mobileno.length!=10){
+				mCheck = false;
+				$("#mcheck").show();
+				$("#mobile_no").addClass("redTextBox");
+				$("#mcheck").html("<b>**Phone Number should be 10 digits</b>");
+				return false;
+			}
+
+			else{
+				mCheck = true;
+				$("#mcheck").hide();
+				$("#mobile_no").removeClass("redTextBox");
+				return true;
+			}
+		}
+
+
+
+		function cityNameCheck(){
+			var city = $("#city_name").val();
+			if(city == ""){
+				cCheck = false;
+				$("#ccheck").show();
+				$("#city_name").addClass("redTextBox");
+				$("#ccheck").html("<b>**City name cannot be empty</b>");
+				return false;
+			}
+			else{
+				cCheck = true;
+				$("#ccheck").hide();
+				$("#city_name").removeClass("redTextBox");
+				return true;
+			}
+		}
+
+
+			function emailCheck(){
+				var emailId = $("#email").val();
+				if(emailId == ""){
+					eCheck = false;
+					$("#echeck").show();
+					$("#email").addClass("redTextBox");
+					$("#echeck").html("<b>**Email cannot be empty</b>");
+					return false;
+				}
+				else{
+					eCheck = true;
+					$("#echeck").hide();
+					$("#email").removeClass("redTextBox");
+					return true;
+				}
+			}	
+
+
+
+			function passwordCheck(){
+				var psd = $("#pwd").val();
+				if(psd == ""){
+					pCheck = false;
+					$("#pcheck").show();
+					$("#pwd").addClass("redTextBox");
+					$("#pcheck").html("<b>**Password cannot be empty</b>");
+					return false;
+				}
+				else{
+					pCheck = true;
+					$("#pcheck").hide();
+					$("#pwd").removeClass("redTextBox");
+					return true;
+				}
+			}	
+
+
+
+		$(":button").click(function(e){
+			firstNameCheck();
+							lastNameCheck();
+							cityNameCheck();
+							emailCheck();
+							passwordCheck();
+			mobileCheck();
+			if (fCheck == true) {
+				return true;
+			} 
+			else {
+				return false;
+			}
+		});
+	});
+
+
+</script>
+</head>
+<body>
+	<div class="container">
+		<div class="title">Registration</div>
+		<div class="content">
+			<form action="login">
+				<div class="user-details">
+
+					<div class="input-box">
+						<span class="details"> First Name: </span> 
+						<input type="text" id="first_name" name="first_name">
+						<span id = "fcheck"></span>
+          				</div>
+<br>
+
+
+					<div class="input-box">
+						<span class="details"> Last Name: </span>
+						<input type="text" id="last_name" name="last_name">
+						<span id = "lcheck"></span>
+					</div>
+<br>
+
+
+					<div class="input-box">
+						<span class="details"> Phone Number: </span>
+						<input type="text" id="mobile_no" name="mobile_no">
+						<span id = "mcheck"></span>
+					</div>
+<br>
+
+					<div class="input-box">
+						<span class="details"> City: </span>
+						<input type="text" id="city_name" name="city_name">
+						<span id = "ccheck"></span>
+					</div>
+
+<br>
+					<div class="input-box">
+						<span class="details"> Email: </span>
+						<input type="email" id="email" name="email">
+						<span id = "echeck"></span>
+					</div>
+<br>
+
+
+					<div class="input-box">
+						<span class="details"> Password: </span>
+						<input type="password" id="pwd" name="pwd">
+						<span id = "pcheck"></span>
+					</div>
+
+				</div>
+					<div class="gender-details">
+						<input type="radio" name="gender" id="dot-1">
+						<input type="radio" name="gender" id="dot-2">
+						<input type="radio" name="gender" id="dot-3">
+						<span class="gender-title">Gender</span>
+						<div class="category">
+							<label for="dot-1">
+								<span class="dot one"></span>
+								<span class="gender">Male</span>
+							</label>
+							<label for="dot-2">
+								<span class="dot two"></span>
+								<span class="gender">Female</span>
+							</label>
+							<label for="dot-3">
+								<span class="dot three"></span>
+								<span class="gender">Prefer not to say</span>
+							</label>
+					</div>
+<br>
+				</div>
+				<div class="button">
+				<button><a href="login.html">SUBMIT</a></button>
+				</div>
+								<div class="button">
+					<input type="submit"  class="Register">
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
